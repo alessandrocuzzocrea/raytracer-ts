@@ -1,8 +1,8 @@
 class Viewport {
-    width: number
-    height: number
-    canvas: HTMLCanvasElement
-    context: CanvasRenderingContext2D
+    private width: number
+    private height: number
+    private canvas: HTMLCanvasElement
+    private context: CanvasRenderingContext2D
 
     constructor(width: number, height: number) {
         this.width = width;
