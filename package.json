@@ -1,0 +1,22 @@
+{
+  "name": "raytracer-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alessandrocuzzocrea/raytracer-ts.git"
+  },
+  "author": "Alessandro Cuzzocrea",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alessandrocuzzocrea/raytracer-ts/issues"
+  },
+  "homepage": "https://github.com/alessandrocuzzocrea/raytracer-ts#readme",
+  "dependencies": {
+    "typescript": "^3.5.2"
+  }
+}
