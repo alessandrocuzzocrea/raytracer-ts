@@ -1,4 +1,4 @@
-class Viewport {
+export class Viewport {
     private width: number
     private height: number
     private canvas: HTMLCanvasElement
