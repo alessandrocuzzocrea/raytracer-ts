@@ -28,4 +28,12 @@ export class Vec3 {
             this.z / length
         );
     }
+
+    public Add(v: Vec3): Vec3 {
+        return new Vec3(
+            this.x + v.x,
+            this.y + v.y,
+            this.z + v.z
+        );
+    }
 }

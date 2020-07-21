@@ -27,3 +27,12 @@ test('returns a normalized vector', ()=> {
     expect(u_hat.y).toBeCloseTo(0.5773502691896258);
     expect(u_hat.z).toBeCloseTo(0.5773502691896258);
 });
+
+test('returns the sum two vectors', ()=> {
+    let u = new Vec3(1, 1, 1);
+    let v = new Vec3(2, 2, 2);
+    let sum = u.Add(v);
+    expect(sum.x).toBe(3);
+    expect(sum.y).toBe(3);
+    expect(sum.z).toBe(3);
+});
