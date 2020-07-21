@@ -8,4 +8,8 @@ export class Ray {
         this.origin = origin;
         this.direction = direction.Normalized();
     }
+
+    public CalcPointAtT(t: number): Vec3 {
+        return this.origin.Add(this.direction.ScalarMultiply(t));
+    }
 }
