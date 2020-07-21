@@ -13,3 +13,8 @@ test('Zero Vector', ()=>{
   expect(u.y).toBe(0);
   expect(u.z).toBe(0);
 });
+
+test('Returns vector length (magnitude)', ()=>{
+  let u = new Vec3(1, 1, 1);
+  expect(u.Length()).toBeCloseTo(1.7320508075688772)
+});
