@@ -8,4 +8,8 @@ export class Vec3 {
         this.y = y;
         this.z = z;
     }
+
+    public static Zero(): Vec3 {
+        return new Vec3(0, 0, 0);
+    }
 }

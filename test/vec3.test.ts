@@ -6,4 +6,10 @@ test('Initialize the vector', () => {
   expect(u.y).toBe(0);
   expect(u.z).toBe(0);
 });
+
+test('Zero Vector', ()=>{
+  let u = Vec3.Zero();
+  expect(u.x).toBe(0);
+  expect(u.y).toBe(0);
+  expect(u.z).toBe(0);
 });
