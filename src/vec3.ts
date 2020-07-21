@@ -19,4 +19,13 @@ export class Vec3 {
         let c = Math.pow(this.z, 2);
         return Math.sqrt(a + b + c);
     }
+
+    public Normalized(): Vec3 {
+        let length = this.Length();
+        return new Vec3(
+            this.x / length,
+            this.y / length,
+            this.z / length
+        );
+    }
 }

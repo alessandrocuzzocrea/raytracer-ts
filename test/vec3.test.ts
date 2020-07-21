@@ -18,3 +18,12 @@ test('Returns vector length (magnitude)', ()=>{
     let u = new Vec3(1, 1, 1);
     expect(u.Length()).toBeCloseTo(1.7320508075688772)
 });
+
+test('returns a normalized vector', ()=> {
+    let u = new Vec3(1,1,1);
+    let u_hat = u.Normalized();
+    expect(u_hat.Length()).toBeCloseTo(1);
+    expect(u_hat.x).toBeCloseTo(0.5773502691896258);
+    expect(u_hat.y).toBeCloseTo(0.5773502691896258);
+    expect(u_hat.z).toBeCloseTo(0.5773502691896258);
+});
