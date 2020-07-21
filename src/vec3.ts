@@ -36,4 +36,12 @@ export class Vec3 {
             this.z + v.z
         );
     }
+
+    public ScalarMultiply(k: number): Vec3 {
+        return new Vec3(
+            this.x * k,
+            this.y * k,
+            this.z * k,
+        );
+    }
 }

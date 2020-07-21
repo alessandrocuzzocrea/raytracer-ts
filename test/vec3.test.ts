@@ -36,3 +36,11 @@ test('returns the sum two vectors', ()=> {
     expect(sum.y).toBe(3);
     expect(sum.z).toBe(3);
 });
+
+test('returns the product of the vector by a scalar', ()=> {
+    let u = new Vec3(1, 1, 1);
+    let product = u.ScalarMultiply(2);
+    expect(product.x).toBe(2);
+    expect(product.y).toBe(2);
+    expect(product.z).toBe(2);
+});
