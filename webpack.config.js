@@ -2,6 +2,9 @@ const path = require('path');
 
 module.exports = {
   entry: './src/main.ts',
+  devServer: {
+    contentBase: './dist',
+  },
   module: {
     rules: [
       {
