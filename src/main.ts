@@ -1,6 +1,4 @@
-import { Vec3 } from './vec3';
-import { Viewport } from './viewport';
+import { Raytracer } from './raytracer';
 
-let viewport = new Viewport(640, 480);
-viewport.init(document);
-viewport.fillRandom();
+let raytracer = new Raytracer(640, 480);
+raytracer.fillRandom();
