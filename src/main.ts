@@ -3,3 +3,4 @@ import { Viewport } from './viewport';
 
 let viewport = new Viewport(640, 480);
 viewport.init(document);
+viewport.fillRandom();

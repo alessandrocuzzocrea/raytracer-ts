@@ -22,4 +22,16 @@ export class Viewport {
         this.context.fillStyle = 'gray';
         this.context.fillRect(0, 0, this.width, this.height);
     }
+
+    fillRandom() {
+        let imageData = this.context.getImageData(0, 0, this.width, this.height);
+        for(var i = 0; i < this.width * this.height * 4; i+=4) {
+            // console.log(i);
+            imageData.data[i+0] = Math.random() * 255;
+            imageData.data[i+1] = Math.random() * 255;
+            imageData.data[i+2] = Math.random() * 255;
+            i += 4;
+        }
+        this.context.putImageData(imageData, 0, 0);
+    }
 }
