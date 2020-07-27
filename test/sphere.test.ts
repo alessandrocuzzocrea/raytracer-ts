@@ -18,3 +18,17 @@ test('Initialize the sphere', () => {
     expect(sphere.radius).toBeTruthy();
     expect(sphere.radius).toBe(1);
 });
+
+test('Intersects ray', () => {
+    let ray = new Ray(new Vec3(0, 0, 0), new Vec3(0, 0, 1));
+    let sphere = new Sphere(new Vec3(0, 0, 10), 1);
+
+    expect(sphere.intersect(ray)).toBeTruthy();
+});
+
+test('Do not intersects ray', () => {
+    let ray = new Ray(new Vec3(0, 0, 0), new Vec3(0, 0, 1));
+    let sphere = new Sphere(new Vec3(0, 10, 0), 1);
+
+    expect(sphere.intersect(ray)).toBeFalsy();
+});
