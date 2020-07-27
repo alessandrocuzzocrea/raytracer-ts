@@ -14,14 +14,13 @@ export class Raytracer {
 
         this.clearButton = document.createElement('button');
         this.clearButton.innerText = 'Clear';
-        this.clearButton.onclick = ()=>{ this.clear() };
+        this.clearButton.onclick = () => this.clear();
         this.div.appendChild(this.clearButton);
 
         this.fillRandomButton = document.createElement('button');
         this.fillRandomButton.innerText = 'fillRandom';
-        this.fillRandomButton.onclick = ()=>{ this.fillRandom() };
+        this.fillRandomButton.onclick = () => this.fillRandom();
         this.div.appendChild(this.fillRandomButton);
-
     }
 
     clear() {
