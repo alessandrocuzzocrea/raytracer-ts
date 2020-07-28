@@ -55,11 +55,12 @@ export class Viewport {
 
                 let ray: Ray = new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
 
+                let offset = this.width * y + x;
+
                 if (this.sphere.intersect(ray)) {
-                    // console.log('loller3')
-                    imageData.data[x * y * 4 + 0] = 255;
-                    imageData.data[x * y * 4 + 1] = 255;
-                    imageData.data[x * y * 4 + 2] = 255;
+                    imageData.data[offset * 4 + 0] = 255;
+                    imageData.data[offset * 4 + 1] = 0;
+                    imageData.data[offset * 4 + 2] = 0;
                 }
             }
         }
