@@ -21,7 +21,7 @@ export class Viewport {
         this.canvas.height = this.height;
         this.clear();
 
-        this.sphere = new Sphere(new Vec3(0, 0, 1), 1);
+        this.sphere = new Sphere(new Vec3(0, 0, 2), 1);
     }
 
     clear() {
