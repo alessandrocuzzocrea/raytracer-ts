@@ -2,6 +2,7 @@ import { Ray } from "./ray";
 import { Vec3 } from "./vec3";
 import { Sphere } from "./sphere";
 import { HitInfo } from "./hitinfo";
+import { Color } from "./color";
 
 export class Viewport {
     private width: number
@@ -59,12 +60,13 @@ export class Viewport {
                 let hitInfo: HitInfo = this.sphere.intersect(ray);
 
                 if (hitInfo.hit) {
-                    imageData.data[offset * 4 + 0] = 255;
-                    imageData.data[offset * 4 + 1] = 255;
-                    imageData.data[offset * 4 + 2] = 255;
+                    imageData.data[offset * 4 + 0] = hitInfo.color.r;
+                    imageData.data[offset * 4 + 1] = hitInfo.color.g;
+                    imageData.data[offset * 4 + 2] = hitInfo.color.b;
                 }
             }
         }
+        this.context.scale(-1, -1);
         this.context.putImageData(imageData, 0, 0);
     }
 
