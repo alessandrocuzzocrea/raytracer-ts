@@ -45,8 +45,11 @@ export class Viewport {
 
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
-                let dirX: number = (1 / this.width) * x;
-                let dirY: number = (1 / this.width) * y;
+                let ratio = this.width / this.height;
+
+                //TODO: cast the ray from the center for the pixel
+                let dirX: number = (ratio / this.width) * x - ratio/2;
+                let dirY: number = (1 / this.height) * y - 1/2;
 
                 let ray: Ray = new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
 
