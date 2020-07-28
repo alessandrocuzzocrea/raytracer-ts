@@ -1,6 +1,7 @@
 import { Ray } from "./ray";
 import { Vec3 } from "./vec3";
 import { Sphere } from "./sphere";
+import { HitInfo } from "./hitinfo";
 
 export class Viewport {
     private width: number
@@ -55,7 +56,9 @@ export class Viewport {
 
                 let offset = this.width * y + x;
 
-                if (this.sphere.intersect(ray)) {
+                let hitInfo: HitInfo = this.sphere.intersect(ray);
+
+                if (hitInfo.hit) {
                     imageData.data[offset * 4 + 0] = 255;
                     imageData.data[offset * 4 + 1] = 255;
                     imageData.data[offset * 4 + 2] = 255;

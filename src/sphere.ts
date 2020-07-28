@@ -2,6 +2,7 @@ import { Primitive } from './primitive'
 
 import { Vec3 } from './vec3'
 import { Ray } from './ray'
+import { HitInfo } from './hitinfo'
 
 export class Sphere implements Primitive{
     origin: Vec3
@@ -34,7 +35,7 @@ export class Sphere implements Primitive{
      *
      * Use the quadratic formula to find t
      */
-    intersect(ray: Ray): boolean {
+    intersect(ray: Ray): HitInfo {
         let x_o = ray.origin.x;
         let y_o = ray.origin.y;
         let z_o = ray.origin.z;
@@ -54,9 +55,9 @@ export class Sphere implements Primitive{
         let C = (x_o - x_c) ** 2 + (y_o - y_c) ** 2 + (z_o - z_c) ** 2 - r ** 2
 
         if (B ** 2 - 4 * A * C >= 0) {
-            return true;
+            return new HitInfo(true);
         } else {
-            return false
+            return new HitInfo(false);
         }
     }
 }

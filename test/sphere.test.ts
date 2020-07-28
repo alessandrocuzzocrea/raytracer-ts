@@ -23,12 +23,12 @@ test('Intersects ray', () => {
     let ray = new Ray(new Vec3(0, 0, 0), new Vec3(0, 0, 1));
     let sphere = new Sphere(new Vec3(0, 0, 10), 1);
 
-    expect(sphere.intersect(ray)).toBeTruthy();
+    expect(sphere.intersect(ray).hit).toBeTruthy();
 });
 
 test('Do not intersects ray', () => {
     let ray = new Ray(new Vec3(0, 0, 0), new Vec3(0, 0, 1));
     let sphere = new Sphere(new Vec3(0, 10, 0), 1);
 
-    expect(sphere.intersect(ray)).toBeFalsy();
+    expect(sphere.intersect(ray).hit).toBeFalsy();
 });
