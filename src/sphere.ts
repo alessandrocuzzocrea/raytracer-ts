@@ -35,6 +35,28 @@ export class Sphere implements Primitive{
      * Use the quadratic formula to find t
      */
     intersect(ray: Ray): boolean {
-        return true;
+        let x_o = ray.origin.x;
+        let y_o = ray.origin.y;
+        let z_o = ray.origin.z;
+
+        let x_d = ray.direction.x;
+        let y_d = ray.direction.y;
+        let z_d = ray.direction.z;
+
+        let x_c = this.origin.x;
+        let y_c = this.origin.y;
+        let z_c = this.origin.z;
+
+        let r = this.radius;
+
+        let A = x_d ** 2 + y_d ** 2 + z_d ** 2
+        let B = 2 * (x_d * (x_o - x_c)+ y_d * (y_o - y_c) + z_d * (z_o - z_c));
+        let C = (x_o - x_c) ** 2 + (y_o - y_c) ** 2 + (z_o - z_c) ** 2 - r ** 2
+
+        if (B ** 2 - 4 * A * C >= 0) {
+            return true;
+        } else {
+            return false
+        }
     }
 }
