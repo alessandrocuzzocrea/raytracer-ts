@@ -67,7 +67,7 @@ export class Viewport {
             }
         }
         this.context.scale(-1, -1);
-        this.context.putImageData(imageData, 0, 0);
+        this.context.putImageData(imageData, 0, 0); //TODO: the resulting image needs to be vertically flipped
     }
 
     saveToPNG() {
