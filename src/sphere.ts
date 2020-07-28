@@ -24,7 +24,7 @@ export class Sphere implements Primitive{
      * A * t^2 + B * t + C (quadratic equation)
      * where
      * A = x_d^2 + y_d^2 + z_d^2
-     * B = 2 * (x_d * (x_0 - x_c)+ y_d * (y_0 - y_c) + z_d * (z_o - z_c))
+     * B = 2 * (x_d * (x_o - x_c)+ y_d * (y_o - y_c) + z_d * (z_o - z_c))
      * C = (x_o - x_c)^2 + (y_o - y_c)^2 + (z^o - z^c)^2 - r^2
      *
      * if the quadratic equation discriminant (B^2 - 4AC)
