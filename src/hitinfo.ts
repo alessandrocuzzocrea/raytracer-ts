@@ -8,9 +8,9 @@ export class HitInfo {
    color: Color
 
    constructor(hit: boolean, hitPoint: Vec3, normal: Vec3, color: Color) {
-       this.hit = hit;
-       this.hitPoint = hitPoint;
-       this.normal = normal; //TODO: look into Typescript optional types
+        this.hit = hit;
+        this.hitPoint = hitPoint;
+        this.normal = normal; //TODO: look into Typescript optional types
         this.color = color;
     }
 }
