@@ -32,7 +32,6 @@ export class Viewport {
     fillRandom() {
         let imageData = this.context.getImageData(0, 0, this.width, this.height);
         for(var i = 0; i < this.width * this.height * 4;) {
-            // console.log(i);
             imageData.data[i+0] = Math.random() * 255;
             imageData.data[i+1] = Math.random() * 255;
             imageData.data[i+2] = Math.random() * 255;
@@ -42,14 +41,10 @@ export class Viewport {
     }
 
     render() {
-        // console.log('loller')
-
         let imageData = this.context.getImageData(0, 0, this.width, this.height);
 
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
-                // console.log('loller2')
-
                 let dirX: number = (1 / this.width) * x;
                 let dirY: number = (1 / this.width) * y;
 
