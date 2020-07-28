@@ -7,6 +7,7 @@ export class Raytracer {
     private clearButton: HTMLButtonElement;
     private fillRandomButton: HTMLButtonElement;
     private renderButton: HTMLButtonElement;
+    private saveToPNGButton: HTMLButtonElement;
 
     constructor(width: number, height: number) {
         this.div = document.createElement('div');
@@ -27,6 +28,11 @@ export class Raytracer {
         this.renderButton.innerText = 'render';
         this.renderButton.onclick = () => this.render();
         this.div.appendChild(this.renderButton);
+
+        this.saveToPNGButton = document.createElement('button');
+        this.saveToPNGButton.innerText = 'saveToPNG';
+        this.saveToPNGButton.onclick = () => this.saveToPNG();
+        this.div.appendChild(this.saveToPNGButton);
     }
 
     clear() {
@@ -39,5 +45,9 @@ export class Raytracer {
 
     render() {
         this.viewport.render();
+    }
+
+    saveToPNG() {
+        this.viewport.saveToPNG();
     }
 }

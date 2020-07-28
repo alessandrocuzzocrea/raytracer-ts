@@ -61,4 +61,9 @@ export class Viewport {
         }
         this.context.putImageData(imageData, 0, 0);
     }
+
+    saveToPNG() {
+        var newTab = window.open();
+        newTab.document.body.innerHTML = '<img src="' + this.canvas.toDataURL() + '">';
+    }
 }
