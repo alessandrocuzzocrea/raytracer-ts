@@ -54,8 +54,8 @@ export class Viewport {
 
                 if (this.sphere.intersect(ray)) {
                     imageData.data[offset * 4 + 0] = 255;
-                    imageData.data[offset * 4 + 1] = 0;
-                    imageData.data[offset * 4 + 2] = 0;
+                    imageData.data[offset * 4 + 1] = 255;
+                    imageData.data[offset * 4 + 2] = 255;
                 }
             }
         }
