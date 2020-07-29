@@ -60,9 +60,11 @@ export class Viewport {
                 let hitInfo: HitInfo = this.sphere.intersect(ray);
 
                 if (hitInfo.hit) {
-                    imageData.data[offset * 4 + 0] = hitInfo.color.r;
-                    imageData.data[offset * 4 + 1] = hitInfo.color.g;
-                    imageData.data[offset * 4 + 2] = hitInfo.color.b;
+                    let hitInfoColor: Color = hitInfo.GetColor();
+
+                    imageData.data[offset * 4 + 0] = hitInfoColor.r;
+                    imageData.data[offset * 4 + 1] = hitInfoColor.g;
+                    imageData.data[offset * 4 + 2] = hitInfoColor.b;
                 }
             }
         }
