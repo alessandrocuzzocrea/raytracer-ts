@@ -8,10 +8,12 @@ import { Color } from './color'
 export class Sphere implements Primitive{
     origin: Vec3
     radius: number
+    color: Color
 
-    constructor(origin: Vec3, radius: number) {
+    constructor(origin: Vec3, radius: number, color: Color) {
         this.origin = origin;
         this.radius = radius;
+        this.color = color;
     }
 
     /**
@@ -67,13 +69,13 @@ export class Sphere implements Primitive{
             let hitPoint: Vec3 = new Vec3(x_i, y_i, z_i);
             let normal: Vec3 = new Vec3((x_i - x_c)/r, (y_i - y_c)/r, (z_i - z_c)/r);
 
-            let color = new Color(
-                normal.x * 255,
-                normal.y * 255,
-                -normal.z * 255,
-            );
+            // let color = new Color(
+            //     normal.x * 255,
+            //     normal.y * 255,
+            //     -normal.z * 255,
+            // );
 
-            return new HitInfo(true, hitPoint, normal, color);
+            return new HitInfo(true, hitPoint, normal, new Color(this.color.r, this.color.g, this.color.b));
         } else {
             return new HitInfo(false, null, null, null);
         }
