@@ -12,11 +12,11 @@ export class Color {
     }
 
     public static Red(): Color {
-        return new Color(231, 76, 60)
+        return new Color(231, 76, 60);
     }
 
     public static Black(): Color {
-        return new Color(44, 62, 80)
+        return new Color(44, 62, 80);
     }
 
     public static Magenta(): Color {

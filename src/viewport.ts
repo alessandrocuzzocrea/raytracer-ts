@@ -3,13 +3,16 @@ import { Vec3 } from "./vec3";
 import { Sphere } from "./sphere";
 import { HitInfo } from "./hitinfo";
 import { Color } from "./color";
+import { Light } from "./light";
 
 export class Viewport {
     private width: number
     private height: number
     private canvas: HTMLCanvasElement
     private context: CanvasRenderingContext2D
+
     private sphere: Sphere
+    private light: Light
 
     constructor(parent: HTMLElement, width: number, height: number) {
         this.width = width;
@@ -24,6 +27,7 @@ export class Viewport {
         this.clear();
 
         this.sphere = new Sphere(new Vec3(0, 0, 3), 1, Color.Red());
+        this.light = new Light(new Vec3(1000, 0, 3))
     }
 
     clear() {
@@ -60,11 +64,15 @@ export class Viewport {
                 let hitInfo: HitInfo = this.sphere.intersect(ray);
 
                 if (hitInfo.hit) {
+                    let pointToLight = this.light.position.Subtract(hitInfo.hitPoint).Normalized();
+
+                    let intensity = Math.max(0, pointToLight.Dot(hitInfo.normal));
+
                     let hitInfoColor: Color = hitInfo.GetColor();
 
-                    imageData.data[offset * 4 + 0] = hitInfoColor.r;
-                    imageData.data[offset * 4 + 1] = hitInfoColor.g;
-                    imageData.data[offset * 4 + 2] = hitInfoColor.b;
+                    imageData.data[offset * 4 + 0] = hitInfoColor.r * intensity;
+                    imageData.data[offset * 4 + 1] = hitInfoColor.g * intensity;
+                    imageData.data[offset * 4 + 2] = hitInfoColor.b * intensity;
                 }
             }
         }

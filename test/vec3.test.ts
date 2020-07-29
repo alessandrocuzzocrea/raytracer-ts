@@ -44,3 +44,27 @@ test('returns the product of the vector by a scalar', ()=> {
     expect(product.y).toBe(2);
     expect(product.z).toBe(2);
 });
+
+test('', ()=> { //TODO: write test description
+    let v = new Vec3(1, 0, 0);
+    let u = new Vec3(0, 1, 0);
+
+    let dot = u.Dot(v);
+    expect(dot).toBe(0);
+});
+
+test('', ()=> { //TODO: write test description
+    let v = new Vec3(1, 0, 0).Normalized();
+    let u = new Vec3(1, 1, 0).Normalized();
+
+    let dot = u.Dot(v);
+    expect(dot).toBeGreaterThan(0);
+});
+
+test('', ()=> { //TODO: write test description
+    let v = new Vec3(1, 0, 0).Normalized();
+    let u = new Vec3(-1, 1, 0).Normalized();
+
+    let dot = u.Dot(v);
+    expect(dot).toBeLessThan(0);
+});

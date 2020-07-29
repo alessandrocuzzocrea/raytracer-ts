@@ -37,11 +37,23 @@ export class Vec3 {
         );
     }
 
+    public Subtract(v: Vec3): Vec3 {
+        return new Vec3(
+            this.x - v.x,
+            this.y - v.y,
+            this.z - v.z
+        );
+    }
+
     public ScalarMultiply(k: number): Vec3 {
         return new Vec3(
             this.x * k,
             this.y * k,
             this.z * k,
         );
+    }
+
+    public Dot(v: Vec3): number {
+        return this.x * v.x + this.y * v.y + this.z * v.z;
     }
 }
