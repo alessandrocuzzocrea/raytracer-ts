@@ -4,14 +4,12 @@ import { Sphere } from "./sphere";
 import { HitInfo } from "./hitinfo";
 import { Color } from "./color";
 import { Light } from "./light";
+import { World } from "./world";
 
 export class Viewport {
     private width: number
     private height: number
     private buffer: Uint8ClampedArray //TODO: maybe it's better if the raytracer class own the buffer directly
-
-    private sphere: Sphere
-    private light: Light
 
     constructor(width: number, height: number) {
         this.width = width;
@@ -19,9 +17,6 @@ export class Viewport {
         this.buffer = new Uint8ClampedArray(width * height * 4);
 
         this.Clear();
-
-        this.sphere = new Sphere(new Vec3(0, 0, 3), 1, Color.Red());
-        this.light = new Light(new Vec3(1000, 0, 3))
     }
 
     GetBuffer() {
@@ -49,7 +44,7 @@ export class Viewport {
         }
     }
 
-    Render() { //TODO: the resulting image needs to be vertically flipped
+    Render(world: World) { //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
                 let ratio = this.width / this.height;
@@ -62,20 +57,22 @@ export class Viewport {
 
                 let offset = this.width * y + x;
 
-                let hitInfo: HitInfo = this.sphere.intersect(ray);
+                world.GetObjects().forEach(object => {
+                    let hitInfo: HitInfo = object.intersect(ray);
 
-                if (hitInfo.hit) {
-                    let pointToLight = this.light.position.Subtract(hitInfo.hitPoint).Normalized();
+                    if (hitInfo.hit) {
+                        let pointToLight = world.GetLight().position.Subtract(hitInfo.hitPoint).Normalized();
 
-                    let intensity = Math.max(0, pointToLight.Dot(hitInfo.normal));
+                        let intensity = Math.max(0, pointToLight.Dot(hitInfo.normal));
 
-                    let hitInfoColor: Color = hitInfo.GetColor();
+                        let hitInfoColor: Color = hitInfo.GetColor();
 
-                    this.buffer[offset * 4 + 0] = hitInfoColor.r * intensity;
-                    this.buffer[offset * 4 + 1] = hitInfoColor.g * intensity;
-                    this.buffer[offset * 4 + 2] = hitInfoColor.b * intensity;
-                    this.buffer[offset * 4 + 3] = 255;
-                }
+                        this.buffer[offset * 4 + 0] = hitInfoColor.r * intensity;
+                        this.buffer[offset * 4 + 1] = hitInfoColor.g * intensity;
+                        this.buffer[offset * 4 + 2] = hitInfoColor.b * intensity;
+                        this.buffer[offset * 4 + 3] = 255;
+                    }
+                });
             }
         }
     }

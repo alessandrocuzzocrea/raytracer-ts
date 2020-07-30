@@ -10,3 +10,4 @@ let raytracer = new Raytracer(width, height);
 let controller = new Controller(ui, raytracer);
 
 controller.Clear();
+controller.Render();

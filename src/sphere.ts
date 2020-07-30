@@ -5,7 +5,7 @@ import { Ray } from './ray'
 import { HitInfo } from './hitinfo'
 import { Color } from './color'
 
-export class Sphere implements Primitive{
+export class Sphere implements Primitive {
     origin: Vec3
     radius: number
     color: Color
