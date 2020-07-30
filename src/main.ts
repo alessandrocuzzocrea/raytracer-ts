@@ -1,4 +1,12 @@
 import { Raytracer } from './raytracer';
+import { UI } from './ui';
+import { Controller } from './controller';
 
-let raytracer = new Raytracer(640, 480);
-raytracer.render();
+const width = 640;
+const height = 480;
+
+let ui = new UI(width, height);
+let raytracer = new Raytracer(width, height);
+let controller = new Controller(ui, raytracer);
+
+controller.Clear();

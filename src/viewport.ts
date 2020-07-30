@@ -8,47 +8,48 @@ import { Light } from "./light";
 export class Viewport {
     private width: number
     private height: number
-    private canvas: HTMLCanvasElement
-    private context: CanvasRenderingContext2D
+    private buffer: Uint8ClampedArray //TODO: maybe it's better if the raytracer class own the buffer directly
 
     private sphere: Sphere
     private light: Light
 
-    constructor(parent: HTMLElement, width: number, height: number) {
+    constructor(width: number, height: number) {
         this.width = width;
         this.height = height;
+        this.buffer = new Uint8ClampedArray(width * height * 4);
 
-        this.canvas = document.createElement('canvas');
-        parent.appendChild(this.canvas);
-
-        this.context = this.canvas.getContext('2d');
-        this.canvas.width = this.width;
-        this.canvas.height = this.height;
-        this.clear();
+        this.Clear();
 
         this.sphere = new Sphere(new Vec3(0, 0, 3), 1, Color.Red());
         this.light = new Light(new Vec3(1000, 0, 3))
     }
 
-    clear() {
-        this.context.fillStyle = 'gray';
-        this.context.fillRect(0, 0, this.width, this.height);
+    GetBuffer() {
+        return this.buffer;
     }
 
-    fillRandom() {
-        let imageData = this.context.getImageData(0, 0, this.width, this.height);
+    Clear() {
+        let clearColor = Color.Magenta();
         for(var i = 0; i < this.width * this.height * 4;) {
-            imageData.data[i+0] = Math.random() * 255;
-            imageData.data[i+1] = Math.random() * 255;
-            imageData.data[i+2] = Math.random() * 255;
+            this.buffer[i+0] = clearColor.r;
+            this.buffer[i+1] = clearColor.g;
+            this.buffer[i+2] = clearColor.b;
+            this.buffer[i+3] = 255;
             i += 4;
         }
-        this.context.putImageData(imageData, 0, 0);
     }
 
-    render() {
-        let imageData = this.context.getImageData(0, 0, this.width, this.height);
+    FillRandom() {
+        for(var i = 0; i < this.width * this.height * 4;) {
+            this.buffer[i+0] = Math.random() * 255;
+            this.buffer[i+1] = Math.random() * 255;
+            this.buffer[i+2] = Math.random() * 255;
+            this.buffer[i+3] = 255;
+            i += 4;
+        }
+    }
 
+    Render() { //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
                 let ratio = this.width / this.height;
@@ -70,17 +71,12 @@ export class Viewport {
 
                     let hitInfoColor: Color = hitInfo.GetColor();
 
-                    imageData.data[offset * 4 + 0] = hitInfoColor.r * intensity;
-                    imageData.data[offset * 4 + 1] = hitInfoColor.g * intensity;
-                    imageData.data[offset * 4 + 2] = hitInfoColor.b * intensity;
+                    this.buffer[offset * 4 + 0] = hitInfoColor.r * intensity;
+                    this.buffer[offset * 4 + 1] = hitInfoColor.g * intensity;
+                    this.buffer[offset * 4 + 2] = hitInfoColor.b * intensity;
+                    this.buffer[offset * 4 + 3] = 255;
                 }
             }
         }
-        this.context.putImageData(imageData, 0, 0); //TODO: the resulting image needs to be vertically flipped
-    }
-
-    saveToPNG() {
-        var newTab = window.open();
-        newTab.document.body.innerHTML = '<img src="' + this.canvas.toDataURL() + '">';
     }
 }
