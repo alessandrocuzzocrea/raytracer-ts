@@ -45,7 +45,7 @@ test('returns the product of the vector by a scalar', ()=> {
     expect(product.z).toBe(2);
 });
 
-test('', ()=> { //TODO: write test description
+test('dot product for perpendicular vector should be zero', ()=> {
     let v = new Vec3(1, 0, 0);
     let u = new Vec3(0, 1, 0);
 
@@ -53,7 +53,7 @@ test('', ()=> { //TODO: write test description
     expect(dot).toBe(0);
 });
 
-test('', ()=> { //TODO: write test description
+test('dot product should be greater than zero if the angle between two vectors is acute', ()=> {
     let v = new Vec3(1, 0, 0).Normalized();
     let u = new Vec3(1, 1, 0).Normalized();
 
@@ -61,7 +61,7 @@ test('', ()=> { //TODO: write test description
     expect(dot).toBeGreaterThan(0);
 });
 
-test('', ()=> { //TODO: write test description
+test('dot product should be less than zero if the angle between two vectors is obtuse', ()=> {
     let v = new Vec3(1, 0, 0).Normalized();
     let u = new Vec3(-1, 1, 0).Normalized();
 
