@@ -1,4 +1,4 @@
-# raytracer-ts<br/> ![Node.js CI](https://github.com/alessandrocuzzocrea/raytracer-ts/workflows/Node.js%20CI/badge.svg)
+# raytracer-ts<br/> ![Build and Deploy](https://github.com/alessandrocuzzocrea/raytracer-ts/workflows/Build%20and%20Deploy/badge.svg)
 Raytracer written in TypeScript
 
 Check it out online!  
