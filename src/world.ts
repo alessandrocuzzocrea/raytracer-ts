@@ -5,7 +5,6 @@ import { Sphere } from "./sphere"
 import { Light } from "./light"
 
 export class World {
-    // private sphere: Sphere
     private light: Light
 
     private objects: Array<Primitive>
