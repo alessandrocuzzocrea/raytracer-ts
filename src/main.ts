@@ -1,12 +1,10 @@
+import { Consts } from './consts';
 import { Raytracer } from './raytracer';
 import { UI } from './ui';
 import { Controller } from './controller';
 
-const width = 640;
-const height = 480;
-
-let ui = new UI(width, height);
-let raytracer = new Raytracer(width, height);
+let ui = new UI(Consts.WIDTH, Consts.HEIGHT);
+let raytracer = new Raytracer(Consts.WIDTH, Consts.HEIGHT);
 let controller = new Controller(ui, raytracer);
 
 controller.Clear();
