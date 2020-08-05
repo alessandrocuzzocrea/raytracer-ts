@@ -57,7 +57,7 @@ export class Viewport {
 
                 let offset = this.width * y + x;
 
-                scene.GetObjects().forEach(object => {
+                scene.Objects().forEach(object => {
                     let hitInfo: HitInfo = object.intersect(ray);
 
                     if (hitInfo.hit) {

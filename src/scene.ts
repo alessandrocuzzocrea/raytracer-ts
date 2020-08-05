@@ -17,7 +17,7 @@ export class Scene {
         this.objects.push(new Sphere(new Vec3(0, 0, 3), 1, Color.Red()));
     }
 
-    GetObjects(): Array<Primitive> { //TODO: maybe just 'Objects' it's clearer
+    Objects(): Array<Primitive> {
         return this.objects;
     }
 
