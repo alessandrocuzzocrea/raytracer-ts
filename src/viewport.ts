@@ -61,7 +61,7 @@ export class Viewport {
                     let hitInfo: HitInfo = object.intersect(ray);
 
                     if (hitInfo.hit) {
-                        let pointToLight = scene.GetLight().position.Subtract(hitInfo.hitPoint).Normalized();
+                        let pointToLight = scene.Light().position.Subtract(hitInfo.hitPoint).Normalized();
 
                         let intensity = Math.max(0, pointToLight.Dot(hitInfo.normal));
 

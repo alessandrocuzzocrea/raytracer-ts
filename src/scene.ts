@@ -21,7 +21,7 @@ export class Scene {
         return this.objects;
     }
 
-    GetLight(): Light {
+    Light(): Light {
         return this.light;
     }
 }
