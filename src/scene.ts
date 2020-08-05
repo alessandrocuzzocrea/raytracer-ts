@@ -4,7 +4,7 @@ import { Primitive } from "./primitive"
 import { Sphere } from "./sphere"
 import { Light } from "./light"
 
-export class World {
+export class Scene {
     private light: Light
 
     private objects: Array<Primitive>

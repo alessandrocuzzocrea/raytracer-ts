@@ -1,13 +1,13 @@
 import { Viewport } from './viewport'
-import { World } from './world';
+import { Scene } from './scene';
 
 export class Raytracer {
     private viewport: Viewport;
-    private world: World;
+    private scene: Scene;
 
     constructor(width: number, height: number) {
         this.viewport = new Viewport(width, height);
-        this.world = new World();
+        this.scene = new Scene();
     }
 
     Clear() {
@@ -19,7 +19,7 @@ export class Raytracer {
     }
 
     Render() {
-        this.viewport.Render(this.world);
+        this.viewport.Render(this.scene);
     }
 
     GetBuffer(): Uint8ClampedArray {

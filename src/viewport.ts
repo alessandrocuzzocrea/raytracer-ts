@@ -4,7 +4,7 @@ import { Sphere } from "./sphere";
 import { HitInfo } from "./hitinfo";
 import { Color } from "./color";
 import { Light } from "./light";
-import { World } from "./world";
+import { Scene } from "./scene";
 
 export class Viewport {
     private width: number
@@ -44,7 +44,7 @@ export class Viewport {
         }
     }
 
-    Render(world: World) { //TODO: the resulting image needs to be vertically flipped
+    Render(scene: Scene) { //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
                 let ratio = this.width / this.height;
@@ -57,11 +57,11 @@ export class Viewport {
 
                 let offset = this.width * y + x;
 
-                world.GetObjects().forEach(object => {
+                scene.GetObjects().forEach(object => {
                     let hitInfo: HitInfo = object.intersect(ray);
 
                     if (hitInfo.hit) {
-                        let pointToLight = world.GetLight().position.Subtract(hitInfo.hitPoint).Normalized();
+                        let pointToLight = scene.GetLight().position.Subtract(hitInfo.hitPoint).Normalized();
 
                         let intensity = Math.max(0, pointToLight.Dot(hitInfo.normal));
 
