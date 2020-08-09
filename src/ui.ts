@@ -35,6 +35,14 @@ export class UI {
         this.div.appendChild(this.saveToPNGButton);
     }
 
+    Canvas():HTMLCanvasElement {
+        return this.canvas;
+    }
+
+    SetCanvasOnClick(fn:(e: MouseEvent) => void) {
+        this.canvas.addEventListener('mousedown', fn);
+    }
+
     SetClearButtonOnClick(fn:() => void) {
         this.clearButton.onclick = fn;
     }
