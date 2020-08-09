@@ -55,7 +55,7 @@ export class Viewport {
     GetRay(x: number, y: number): Ray {
         //TODO: cast the ray from the center for the pixel
         let dirX: number = (this.Ratio() / this.width) * x - this.Ratio()/2;
-        let dirY: number = (1 / this.height) * y - 1/2;
+        let dirY: number = 1/2 - (1 / this.height) * y;
         return new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
     }
 

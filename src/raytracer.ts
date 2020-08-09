@@ -23,7 +23,6 @@ export class Raytracer {
 
     Render() {
         // this.viewport.Render(this.scene);
-        //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.viewport.Height(); y++) {
             for (var x: number = 0; x < this.viewport.Width(); x++) {
                 let ray: Ray = this.viewport.GetRay(x, y);
