@@ -1,15 +1,11 @@
 import { Ray } from "./ray";
 import { Vec3 } from "./vec3";
-import { Sphere } from "./sphere";
-import { HitInfo } from "./hitinfo";
 import { Color } from "./color";
-import { Light } from "./light";
-import { Scene } from "./scene";
 
 export class Viewport {
     private width: number
     private height: number
-    private buffer: Uint8ClampedArray //TODO: maybe it's better if the raytracer class own the buffer directly
+    private buffer: Uint8ClampedArray
 
     constructor(width: number, height: number) {
         this.width = width;
@@ -21,6 +17,14 @@ export class Viewport {
 
     GetBuffer() {
         return this.buffer;
+    }
+
+    Width(): number {
+        return this.width;
+    }
+
+    Height(): number {
+        return this.height;
     }
 
     Clear() {
@@ -57,30 +61,5 @@ export class Viewport {
         this.buffer[offset * 4 + 1] = color.g;
         this.buffer[offset * 4 + 2] = color.b;
         this.buffer[offset * 4 + 3] = 255;
-    }
-
-    Render(scene: Scene) { //TODO: the resulting image needs to be vertically flipped
-        for (var y: number = 0; y < this.height; y++) {
-            for (var x: number = 0; x < this.width; x++) {
-                let ratio = this.width / this.height;
-                let ray: Ray = this.GetRay(x, y, ratio);
-
-                let offset = this.width * y + x;
-
-                scene.Objects().forEach(object => {
-                    let hitInfo: HitInfo = object.intersect(ray);
-
-                    if (hitInfo.hit) {
-                        let pointToLight = scene.Light().position.Subtract(hitInfo.hitPoint).Normalized();
-
-                        let intensity = Math.max(0, pointToLight.Dot(hitInfo.normal));
-
-                        let hitInfoColor: Color = hitInfo.GetColor();
-
-                        this.DrawPixel(x, y, new Color(hitInfoColor.r * intensity, hitInfoColor.g * intensity, hitInfoColor.b * intensity));
-                    }
-                });
-            }
-        }
     }
 }
