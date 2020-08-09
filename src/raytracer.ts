@@ -29,8 +29,6 @@ export class Raytracer {
                 let ratio = this.viewport.Width() / this.viewport.Height();
                 let ray: Ray = this.viewport.GetRay(x, y, ratio);
 
-                let offset = this.viewport.Width() * y + x;
-
                 this.scene.Objects().forEach(object => {
                     let hitInfo: HitInfo = object.intersect(ray);
 
