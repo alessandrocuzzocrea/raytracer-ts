@@ -27,6 +27,10 @@ export class Viewport {
         return this.height;
     }
 
+    Ratio(): number {
+        return this.width / this.height;
+    }
+
     Clear() {
         let clearColor = Color.Magenta();
         for(var i = 0; i < this.width * this.height * 4;) {
@@ -48,9 +52,9 @@ export class Viewport {
         }
     }
 
-    GetRay(x: number, y: number, ratio: number): Ray {
+    GetRay(x: number, y: number): Ray {
         //TODO: cast the ray from the center for the pixel
-        let dirX: number = (ratio / this.width) * x - ratio/2;
+        let dirX: number = (this.Ratio() / this.width) * x - this.Ratio()/2;
         let dirY: number = (1 / this.height) * y - 1/2;
         return new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
     }

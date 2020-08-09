@@ -26,8 +26,7 @@ export class Raytracer {
         //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.viewport.Height(); y++) {
             for (var x: number = 0; x < this.viewport.Width(); x++) {
-                let ratio = this.viewport.Width() / this.viewport.Height();
-                let ray: Ray = this.viewport.GetRay(x, y, ratio);
+                let ray: Ray = this.viewport.GetRay(x, y);
 
                 this.scene.Objects().forEach(object => {
                     let hitInfo: HitInfo = object.intersect(ray);
