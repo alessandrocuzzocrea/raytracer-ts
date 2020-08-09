@@ -9,6 +9,13 @@ export class Controller {
         this.ui = ui;
         this.raytracer = raytracer;
 
+        ui.SetCanvasOnClick((e: MouseEvent)=>{
+            let rect = this.ui.Canvas().getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+
+            this.PrintRayDebugInfo(x, y);
+        });
         ui.SetClearButtonOnClick(()=>this.Clear());
         ui.SetFillRandomButtonOnClick(()=>this.FillRandom());
         ui.SetRenderButtonOnClick(()=>this.Render());
@@ -32,5 +39,9 @@ export class Controller {
 
     SaveToPNG() {
         this.ui.SaveToPNG();
+    }
+
+    PrintRayDebugInfo(x: number, y: number) {
+        this.raytracer.RenderXY(x, y);
     }
 }
