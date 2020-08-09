@@ -20,4 +20,8 @@ export class Color {
     public static Magenta(): Color {
         return new Color(155, 89, 182);
     }
+
+    public static White(): Color {
+        return new Color(255, 255, 255);
+    }
 }
