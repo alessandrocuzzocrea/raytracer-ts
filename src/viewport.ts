@@ -44,16 +44,18 @@ export class Viewport {
         }
     }
 
+    GetRay(x: number, y: number, ratio: number): Ray {
+        //TODO: cast the ray from the center for the pixel
+        let dirX: number = (ratio / this.width) * x - ratio/2;
+        let dirY: number = (1 / this.height) * y - 1/2;
+        return new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
+    }
+
     Render(scene: Scene) { //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
                 let ratio = this.width / this.height;
-
-                //TODO: cast the ray from the center for the pixel
-                let dirX: number = (ratio / this.width) * x - ratio/2;
-                let dirY: number = (1 / this.height) * y - 1/2;
-
-                let ray: Ray = new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
+                let ray: Ray = this.GetRay(x, y, ratio);
 
                 let offset = this.width * y + x;
 
