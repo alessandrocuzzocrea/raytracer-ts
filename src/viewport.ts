@@ -51,6 +51,14 @@ export class Viewport {
         return new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
     }
 
+    DrawPixel(x: number, y: number, color: Color) {
+        let offset = this.width * y + x;
+        this.buffer[offset * 4 + 0] = color.r;
+        this.buffer[offset * 4 + 1] = color.g;
+        this.buffer[offset * 4 + 2] = color.b;
+        this.buffer[offset * 4 + 3] = 255;
+    }
+
     Render(scene: Scene) { //TODO: the resulting image needs to be vertically flipped
         for (var y: number = 0; y < this.height; y++) {
             for (var x: number = 0; x < this.width; x++) {
@@ -69,10 +77,7 @@ export class Viewport {
 
                         let hitInfoColor: Color = hitInfo.GetColor();
 
-                        this.buffer[offset * 4 + 0] = hitInfoColor.r * intensity;
-                        this.buffer[offset * 4 + 1] = hitInfoColor.g * intensity;
-                        this.buffer[offset * 4 + 2] = hitInfoColor.b * intensity;
-                        this.buffer[offset * 4 + 3] = 255;
+                        this.DrawPixel(x, y, new Color(hitInfoColor.r * intensity, hitInfoColor.g * intensity, hitInfoColor.b * intensity));
                     }
                 });
             }
