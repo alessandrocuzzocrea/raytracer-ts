@@ -1,6 +1,6 @@
-import { Ray } from "./ray";
 import { Vec3 } from "./vec3";
 import { Color } from "./color";
+import { CameraRay } from "./cameraray";
 
 export class Viewport {
     private width: number
@@ -52,11 +52,11 @@ export class Viewport {
         }
     }
 
-    GetRay(x: number, y: number): Ray {
+    GetRay(x: number, y: number): CameraRay {
         //TODO: cast the ray from the center for the pixel
         let dirX: number = (this.Ratio() / this.width) * x - this.Ratio()/2;
         let dirY: number = 1/2 - (1 / this.height) * y;
-        return new Ray(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
+        return new CameraRay(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
     }
 
     DrawPixel(x: number, y: number, color: Color) {

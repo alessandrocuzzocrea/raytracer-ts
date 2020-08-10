@@ -1,7 +1,7 @@
 import { IIntersectable } from './iintersectable'
 
 import { Vec3 } from './vec3'
-import { Ray } from './ray'
+import { AbstractRay } from './abstractray'
 import { HitInfo } from './hitinfo'
 import { Color } from './color'
 
@@ -19,7 +19,7 @@ export class Sphere implements IIntersectable {
     /**
      * Ray-Sphere Intersection (using the Algebraic Solution)
      */
-    intersect(ray: Ray): HitInfo {
+    intersect(ray: AbstractRay): HitInfo {
         //Ray: r_o + r_d * t
         let x_o = ray.origin.x;
         let y_o = ray.origin.y;

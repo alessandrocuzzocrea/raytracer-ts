@@ -1,7 +1,6 @@
 import { Viewport } from './viewport'
 import { Scene } from './scene';
-import { Ray } from './ray';
-import { HitInfo } from './hitinfo';
+import { CameraRay } from './cameraray';
 import { Color } from './color';
 
 export class Raytracer {
@@ -24,7 +23,7 @@ export class Raytracer {
     Render() {
         for (var y: number = 0; y < this.viewport.Height(); y++) {
             for (var x: number = 0; x < this.viewport.Width(); x++) {
-                let ray: Ray = this.viewport.GetRay(x, y);
+                let ray: CameraRay = this.viewport.GetRay(x, y);
                 let color: Color = ray.Shoot(this.scene);
                 if (color) {
                     this.viewport.DrawPixel(x, y, color);
