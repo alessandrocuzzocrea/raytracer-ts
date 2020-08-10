@@ -1,9 +1,11 @@
 import { Scene } from "./scene";
 import { Color } from "./color";
 import { AbstractRay } from "./abstractray";
+import { IlluminationRay } from "./illuminationray";
+import { Light } from "./light";
 
 export class CameraRay extends AbstractRay {
-    //TODO: find a better name for this method
+
     public Shoot(scene: Scene): Color {
         let color: Color = null;
         for (let i = 0; i < scene.Objects().length; i++) {
@@ -14,12 +16,20 @@ export class CameraRay extends AbstractRay {
 
         let hitInfo = this.GetNearerHit();
         if (hitInfo) {
-            let pointToLight        = scene.Light().position.Subtract(hitInfo.hitPoint).Normalized();
-            let intensity           = Math.max(0, pointToLight.Dot(hitInfo.normal));
-            let hitInfoColor: Color = hitInfo.GetColor();
+            this.SpawnChildIlluminationRay(scene.Light());
+            let intensity = this.illuminationRay.Shoot(scene/*, object*/);
 
-            color = new Color(hitInfoColor.r * intensity, hitInfoColor.g * intensity, hitInfoColor.b * intensity);
+            let localColor: Color = hitInfo.GetColor();
+            color = new Color(localColor.r * intensity.r, localColor.g * intensity.g, localColor.b * intensity.b);
         }
         return color;
+    }
+
+    public SpawnChildIlluminationRay(light: Light) {
+        const origin = this.GetNearerHit().HitPoint();
+        const pointToLight = light.position.Subtract(origin).Normalized();
+
+        this.illuminationRay = new IlluminationRay(origin, pointToLight);
+        this.illuminationRay.parentRay = this;
     }
 }

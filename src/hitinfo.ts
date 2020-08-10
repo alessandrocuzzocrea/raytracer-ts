@@ -5,7 +5,7 @@ import { Consts } from "./consts";
 export class HitInfo {
    hit: boolean
    t: number
-   hitPoint: Vec3
+   hitPoint: Vec3 //TODO: terrible name
    normal: Vec3
    color: Color
 
@@ -15,6 +15,14 @@ export class HitInfo {
         this.hitPoint = hitPoint;
         this.normal = normal; //TODO: look into Typescript optional types
         this.color = color;
+    }
+
+    public HitPoint(): Vec3 {
+        return new Vec3(
+            this.hitPoint.x,
+            this.hitPoint.y,
+            this.hitPoint.z
+        );
     }
 
     public GetColor() {

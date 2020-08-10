@@ -2,16 +2,23 @@ import { Vec3 } from "./vec3";
 import { HitInfo } from './hitinfo';
 import { Scene } from "./scene";
 import { Color } from "./color";
+import { IlluminationRay } from "./illuminationray";
+import { Light } from "./light";
 
 export abstract class AbstractRay {
     origin : Vec3;
     direction : Vec3;
     public hitInfo : Array<HitInfo>;
+    // public childRays: Array<AbstractRay>;
+    public parentRay : AbstractRay;
+    public illuminationRay : IlluminationRay;
 
     constructor(origin: Vec3, direction: Vec3) {
         this.origin = origin;
         this.direction = direction.Normalized();
         this.hitInfo = new Array<HitInfo>();
+
+        // this.childRays = new Array<AbstractRay>();
     }
 
     public CalcPointAtT(t: number): Vec3 {
