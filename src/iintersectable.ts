@@ -1,5 +1,5 @@
 import { Ray } from "./ray";
 import { HitInfo } from "./hitinfo";
-export interface Primitive {
+export interface IIntersectable {
     intersect(ray: Ray): HitInfo;
 }

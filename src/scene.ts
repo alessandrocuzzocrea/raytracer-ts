@@ -1,13 +1,13 @@
 import { Color } from "./color"
 import { Vec3 } from "./vec3"
-import { Primitive } from "./primitive"
+import { IIntersectable } from "./iintersectable"
 import { Sphere } from "./sphere"
 import { Light } from "./light"
 
 export class Scene {
     private light: Light
 
-    private objects: Array<Primitive>
+    private objects: Array<IIntersectable>
 
     constructor() {
         this.objects = new Array();
@@ -17,7 +17,7 @@ export class Scene {
         this.objects.push(new Sphere(new Vec3(0, 0, 3), 1, Color.Red()));
     }
 
-    Objects(): Array<Primitive> {
+    Objects(): Array<IIntersectable> {
         return this.objects;
     }
 

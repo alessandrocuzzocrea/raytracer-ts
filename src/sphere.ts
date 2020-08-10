@@ -1,11 +1,11 @@
-import { Primitive } from './primitive'
+import { IIntersectable } from './iintersectable'
 
 import { Vec3 } from './vec3'
 import { Ray } from './ray'
 import { HitInfo } from './hitinfo'
 import { Color } from './color'
 
-export class Sphere implements Primitive {
+export class Sphere implements IIntersectable {
     origin: Vec3
     radius: number
     color: Color
