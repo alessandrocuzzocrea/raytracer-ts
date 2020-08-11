@@ -57,7 +57,7 @@ export class Sphere implements IIntersectable {
             let t_0 = ( -B - Math.sqrt(discriminant) ) / 2 * A;
 
             // Remember: if t < 0 then the intersection is behind the ray's origin
-            if (t_0 < 0) return new HitInfo(false, null, null, null); //TODO: this is ugly
+            if (t_0 < 0) return new HitInfo(false, -Math.E, null, null, null); //TODO: this is ugly, e usage is random and meaningless here
 
             //Use t to find intersection point
             let x_i = x_o + x_d * t_0;
@@ -67,9 +67,9 @@ export class Sphere implements IIntersectable {
             let hitPoint: Vec3 = new Vec3(x_i, y_i, z_i);
             let normal: Vec3 = new Vec3((x_i - x_c)/r, (y_i - y_c)/r, (z_i - z_c)/r);
 
-            return new HitInfo(true, hitPoint, normal, new Color(this.color.r, this.color.g, this.color.b));
+            return new HitInfo(true, t_0, hitPoint, normal, new Color(this.color.r, this.color.g, this.color.b));
         } else {
-            return new HitInfo(false, null, null, null); //TODO: this is ugly part 2
+            return new HitInfo(false, -Math.E, null, null, null); //TODO: this is ugly part 2, e usage is random and meaningless here
         }
     }
 }

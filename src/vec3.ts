@@ -13,6 +13,10 @@ export class Vec3 {
         return new Vec3(0, 0, 0);
     }
 
+    public static Forward(): Vec3 {
+        return new Vec3(0, 0, 1);
+    }
+
     public Length(): number {
         let a = Math.pow(this.x, 2);
         let b = Math.pow(this.y, 2);
