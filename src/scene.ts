@@ -12,8 +12,9 @@ export class Scene {
     constructor() {
         this.objects = new Array();
 
-        this.light = new Light(new Vec3(1000, 0, 3))
+        this.light = new Light(new Vec3(1000, 500, 3))
 
+        this.objects.push(new Sphere(new Vec3(.9, 0.5, 2.4), 0.1, Color.Yellow()));
         this.objects.push(new Sphere(new Vec3(0, 0, 3), 1, Color.Red()));
     }
 

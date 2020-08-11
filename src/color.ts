@@ -14,6 +14,10 @@ export class Color {
     }
 
     public static Black(): Color {
+        return new Color(0, 0, 0);
+    }
+
+    public static MidnightBlue(): Color {
         return new Color(44, 62, 80);
     }
 
@@ -23,5 +27,13 @@ export class Color {
 
     public static White(): Color {
         return new Color(255, 255, 255);
+    }
+
+    public static Yellow(): Color {
+        return new Color(241, 196, 15);
+    }
+
+    public static Green(): Color {
+        return new Color(46, 204, 113)
     }
 }
