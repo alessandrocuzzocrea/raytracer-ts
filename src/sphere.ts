@@ -56,6 +56,9 @@ export class Sphere implements IIntersectable {
             // Use the quadratic formula to find t
             let t_0 = ( -B - Math.sqrt(discriminant) ) / 2 * A;
 
+            // Remember: if t < 0 then the intersection is behind the ray's origin
+            if (t_0 < 0) return new HitInfo(false, null, null, null); //TODO: this is ugly
+
             //Use t to find intersection point
             let x_i = x_o + x_d * t_0;
             let y_i = y_o + y_d * t_0;
@@ -66,7 +69,7 @@ export class Sphere implements IIntersectable {
 
             return new HitInfo(true, hitPoint, normal, new Color(this.color.r, this.color.g, this.color.b));
         } else {
-            return new HitInfo(false, null, null, null);
+            return new HitInfo(false, null, null, null); //TODO: this is ugly part 2
         }
     }
 }
