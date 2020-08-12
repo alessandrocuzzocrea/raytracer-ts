@@ -3,6 +3,7 @@ import { Vec3 } from "./vec3"
 import { IIntersectable } from "./iintersectable"
 import { Sphere } from "./sphere"
 import { Light } from "./light"
+import { Plane } from "./plane"
 
 export class Scene {
     private light: Light
@@ -16,6 +17,7 @@ export class Scene {
 
         this.objects.push(new Sphere(new Vec3(.9, 0.5, 2.4), 0.1, Color.Yellow()));
         this.objects.push(new Sphere(new Vec3(0, 0, 3), 1, Color.Red()));
+        this.objects.push(new Plane(new Vec3(0, 0, 0), new Vec3(0, 1, 0), Color.Green()));
     }
 
     Objects(): Array<IIntersectable> {
