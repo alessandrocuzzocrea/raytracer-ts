@@ -32,7 +32,19 @@ export class Plane implements IIntersectable {
             let hitPoint: Vec3 = new Vec3(x_i, y_i, z_i);
             let normal: Vec3 = P_n;
 
-            return new HitInfo(true, t, hitPoint, normal, new Color(this.color.r, this.color.g, this.color.b));
+
+            const u = Math.abs(hitPoint.x % 1);
+            const v = Math.abs(hitPoint.z % 1);
+
+            let color = null;
+
+            if (u < .5 && v < .5 || u > .5 && v > .5) {
+                color = this.color;
+            } else {
+                color = Color.White();
+            }
+
+            return new HitInfo(true, t, hitPoint, normal, color);
         } else {
             return new HitInfo(false, -Math.E, null, null, null); //TODO: this is ugly, e usage is random and meaningless here
         }
