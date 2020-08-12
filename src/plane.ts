@@ -10,9 +10,9 @@ export class Plane implements IIntersectable {
     normal: Vec3
     color: Color
 
-    constructor(origin: Vec3, normal: Vec3, color: Color) {
-        this.origin = origin;
-        this.normal = normal;
+    constructor(/*origin: Vec3,*/ normal: Vec3, color: Color) {
+        // this.origin = origin;
+        this.normal = normal.Normalized();
         this.color = color;
     }
 
@@ -20,9 +20,9 @@ export class Plane implements IIntersectable {
         const P_n = this.normal;
         const R_o = ray.origin;
         const R_d = ray.direction;
-        const D   = 1;
+        const D   = 1; //basically D is the translation of distance along the normal vector, also it's the distance between the plane and the origin of the coordinate system
 
-        let t = (- ( P_n.Dot(R_o) + D )) / P_n.Dot(R_d);
+        let t = - ( P_n.Dot(R_o) + D ) / P_n.Dot(R_d);
 
         if (t > 0) {
             let x_i = ray.origin.x + ray.direction.x * t;

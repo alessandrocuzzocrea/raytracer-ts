@@ -17,7 +17,7 @@ export class Scene {
 
         this.objects.push(new Sphere(new Vec3(.9, 0.5, 2.4), 0.1, Color.Yellow()));
         this.objects.push(new Sphere(new Vec3(0, 0, 3), 1, Color.Red()));
-        this.objects.push(new Plane(Vec3.Zero(), Vec3.Up(), Color.Green()));
+        this.objects.push(new Plane(Vec3.Up(), Color.Green()));
     }
 
     Objects(): Array<IIntersectable> {
