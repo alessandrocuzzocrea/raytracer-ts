@@ -17,13 +17,6 @@ export class Plane implements IIntersectable {
     }
 
     intersect(ray: AbstractRay): HitInfo {
-        let x_o = ray.origin.x;
-        let y_o = ray.origin.y;
-        let z_o = ray.origin.z;
-        let x_d = ray.direction.x;
-        let y_d = ray.direction.y;
-        let z_d = ray.direction.z;
-
         const P_n = this.normal;
         const R_o = ray.origin;
         const R_d = ray.direction;
@@ -32,9 +25,9 @@ export class Plane implements IIntersectable {
         let t = (- ( P_n.Dot(R_o) + D )) / P_n.Dot(R_d);
 
         if (t > 0) {
-            let x_i = x_o + x_d * t;
-            let y_i = y_o + y_d * t;
-            let z_i = z_o + z_d * t;
+            let x_i = ray.origin.x + ray.direction.x * t;
+            let y_i = ray.origin.y + ray.direction.y * t;
+            let z_i = ray.origin.z + ray.direction.z * t;
 
             let hitPoint: Vec3 = new Vec3(x_i, y_i, z_i);
             let normal: Vec3 = P_n;
