@@ -7,4 +7,5 @@ export class Settings {
     public static          RENDER_RED_SPHERE    = true;
     public static          RENDER_PLANE         = true;
     public static          LIGHTS               = true;
+    public static          CHECKERBOARD_PATTERN = true;
 }

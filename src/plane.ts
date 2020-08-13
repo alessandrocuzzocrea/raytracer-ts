@@ -4,6 +4,7 @@ import { Vec3 } from './vec3'
 import { AbstractRay } from './abstractray'
 import { HitInfo } from './hitinfo'
 import { Color } from './color'
+import { Settings } from './settings'
 
 export class Plane implements IIntersectable {
     origin: Vec3
@@ -38,10 +39,15 @@ export class Plane implements IIntersectable {
 
             let color = null;
 
-            if (u < .5 && v < .5 || u > .5 && v > .5) {
-                color = this.color;
+            //TODO: this need a refactor
+            if (Settings.CHECKERBOARD_PATTERN) {
+                if (u < .5 && v < .5 || u > .5 && v > .5) {
+                    color = this.color;
+                } else {
+                    color = Color.White();
+                }
             } else {
-                color = Color.White();
+                color = this.color;
             }
 
             return new HitInfo(true, t, hitPoint, normal, color);
