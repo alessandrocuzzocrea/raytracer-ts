@@ -3,6 +3,7 @@ import { Color } from "./color";
 import { AbstractRay } from "./abstractray";
 import { IlluminationRay } from "./illuminationray";
 import { Light } from "./light";
+import { Settings } from "./settings";
 
 export class CameraRay extends AbstractRay {
 
@@ -17,7 +18,7 @@ export class CameraRay extends AbstractRay {
         let hitInfo = this.GetNearerHit();
         if (hitInfo) {
             this.SpawnChildIlluminationRay(scene.Light());
-            let intensity = this.illuminationRay.Shoot(scene/*, object*/);
+            let intensity = Settings.LIGHTS ? this.illuminationRay.Shoot(scene/*, object*/) : new Color(1, 1, 1);
 
             let localColor: Color = hitInfo.GetColor();
             color = new Color(localColor.r * intensity.r, localColor.g * intensity.g, localColor.b * intensity.b);
