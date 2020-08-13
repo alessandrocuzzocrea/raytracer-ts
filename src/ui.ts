@@ -18,16 +18,12 @@ export class UI {
         this.canvas.height = height;
 
         this.clearButton = <HTMLButtonElement>document.getElementById('clear-button');
-        this.clearButton.innerText = 'Clear';
 
         this.fillRandomButton = <HTMLButtonElement>document.getElementById('fill-random-button');
-        this.fillRandomButton.innerText = 'fillRandom';
 
         this.renderButton = <HTMLButtonElement>document.getElementById('render-button');
-        this.renderButton.innerText = 'render';
 
         this.saveToPNGButton = <HTMLButtonElement>document.getElementById('save-to-png-button');
-        this.saveToPNGButton.innerText = 'saveToPNG';
     }
 
     SetClearButtonOnClick(fn:() => void) {

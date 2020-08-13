@@ -4,17 +4,66 @@
         <meta charset="utf-8">
         <title>raytracer-ts</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>
+            body {
+                background-color: linen;
+            }
+
+            h1 {
+                color: maroon;
+                margin-left: 40px;
+                text-align: center;
+            }
+
+            p {
+                text-align: center;
+            }
+
+            #ui-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            #buttons-container {
+                border-style: solid;
+                border-width: 1px;
+                margin: 10px;
+            }
+
+            button {
+                width: 100%;
+                display: block;
+            }
+
+            #canvas-container {
+                border-style: solid;
+                border-width: 1px;
+                margin: 10px;
+            }
+
+            canvas {
+                display: block;
+            }
+        </style>
     </head>
     <body>
+        <h1>raytracer-ts</h1>
         <div id="ui-container">
+            <div id="buttons-container">
+                <p>controls</p>
+                <button id="render-button">Render</button>
+                <button id="save-to-png-button">Save To PNG</button>
+                <button id="fill-random-button">Fill Random</button>
+                <button id="clear-button">Clear</button>
+                <p>scene</p>
+                <button id="light-button">Light</button>
+                <button id="sphere-red-button">Red Sphere</button>
+                <button id="sphere-yellow-button">Yellow Sphere</button>
+                <button id="ground-button">Ground</button>
+                <button id="aa-button">Anti Aliasing</button>
+            </div>
             <div id="canvas-container">
                 <canvas id="canvas"></canvas>
-            </div>
-            <div id="buttons-container">
-                <button id="clear-button">Clear</button>
-                <button id="fill-random-button">fillRandom</button>
-                <button id="render-button">render</button>
-                <button id="save-to-png-button">saveToPNG</button>
             </div>
         </div>
     </body>
