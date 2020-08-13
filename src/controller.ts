@@ -26,7 +26,7 @@ export class Controller {
     }
 
     Render() {
-        this.raytracer.Render();
+        this.raytracer.Render2();
         this.ui.DrawCanvas(this.raytracer.GetBuffer());
     }
 

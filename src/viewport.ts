@@ -59,6 +59,21 @@ export class Viewport {
         return new CameraRay(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
     }
 
+    GetRay2(x: number, y: number): Array<CameraRay> {
+        let res = new Array<CameraRay>();
+
+        for(let j = 0; j < 1; j+=.25) {
+            for(let i = 0; i < 1; i+=.25) {
+                let dirX: number = (this.Ratio() / this.width) * ( x + i ) - this.Ratio()/2;
+                let dirY: number = 1/2 - (1 / this.height) * ( y + j );
+
+                res.push(new CameraRay(new Vec3(0,0,0), new Vec3(dirX, dirY, 1)));
+            }
+        }
+
+        return res;
+    }
+
     DrawPixel(x: number, y: number, color: Color) {
         let offset = this.width * y + x;
         this.buffer[offset * 4 + 0] = color.r;
