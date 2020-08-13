@@ -9,7 +9,6 @@ export class Raytracer {
 
     constructor(width: number, height: number) {
         this.viewport = new Viewport(width, height);
-        this.scene = new Scene();
     }
 
     Clear() {
@@ -21,6 +20,7 @@ export class Raytracer {
     }
 
     Render() {
+        this.scene = new Scene();
         let clearColor = this.viewport.ClearColor();
 
         for (var y: number = 0; y < this.viewport.Height(); y++) {

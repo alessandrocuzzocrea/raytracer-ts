@@ -35,6 +35,10 @@
                 display: block;
             }
 
+            button.disabled {
+                color:gainsboro;
+            }
+
             #canvas-container {
                 border-style: solid;
                 border-width: 1px;
@@ -52,15 +56,17 @@
             <div id="buttons-container">
                 <p>controls</p>
                 <button id="render-button">Render</button>
-                <button id="save-to-png-button">Save To PNG</button>
                 <button id="fill-random-button">Fill Random</button>
                 <button id="clear-button">Clear</button>
                 <p>scene</p>
-                <button id="light-button">Light</button>
-                <button id="sphere-red-button">Red Sphere</button>
-                <button id="sphere-yellow-button">Yellow Sphere</button>
+                <button id="lights-button">Lights</button>
+                <button id="red-sphere-button">Red Sphere</button>
+                <button id="yellow-sphere-button">Yellow Sphere</button>
                 <button id="ground-button">Ground</button>
+                <button id="checkerboard-button">Checkerboard</button>
                 <button id="aa-button">Anti Aliasing</button>
+                <p>export</p>
+                <button id="save-to-png-button">Save To PNG</button>
             </div>
             <div id="canvas-container">
                 <canvas id="canvas"></canvas>
