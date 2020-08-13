@@ -31,8 +31,12 @@ export class Viewport {
         return this.width / this.height;
     }
 
+    ClearColor(): Color {
+        return Color.Magenta();
+    }
+
     Clear() {
-        let clearColor = Color.Magenta();
+        let clearColor = this.ClearColor();
         for(var i = 0; i < this.width * this.height * 4;) {
             this.buffer[i+0] = clearColor.r;
             this.buffer[i+1] = clearColor.g;
@@ -52,11 +56,20 @@ export class Viewport {
         }
     }
 
-    GetRay(x: number, y: number): CameraRay {
-        //TODO: cast the ray from the center for the pixel
-        let dirX: number = (this.Ratio() / this.width) * x - this.Ratio()/2;
-        let dirY: number = 1/2 - (1 / this.height) * y;
-        return new CameraRay(new Vec3(0,0,0), new Vec3(dirX, dirY, 1));
+    GetRays(x: number, y: number, count: number): Array<CameraRay> {
+        let res = new Array<CameraRay>();
+
+        for(let j = 0; j < 1; j += 1/count) {
+            for(let i = 0; i < 1; i += 1/count) {
+               //TODO: cast the ray from the center for the pixel
+                let dirX: number = (this.Ratio() / this.width) * ( x + i ) - this.Ratio()/2;
+                let dirY: number = 1/2 - (1 / this.height) * ( y + j );
+
+                res.push(new CameraRay(new Vec3(0,0,0), new Vec3(dirX, dirY, 1)));
+            }
+        }
+
+        return res;
     }
 
     DrawPixel(x: number, y: number, color: Color) {
