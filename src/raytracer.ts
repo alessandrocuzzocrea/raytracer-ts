@@ -1,7 +1,7 @@
 import { Viewport } from './viewport'
 import { Scene } from './scene';
 import { Color } from './color';
-import { Consts } from './consts';
+import { Settings } from './settings';
 
 export class Raytracer {
     private viewport: Viewport;
@@ -25,7 +25,7 @@ export class Raytracer {
 
         for (var y: number = 0; y < this.viewport.Height(); y++) {
             for (var x: number = 0; x < this.viewport.Width(); x++) {
-                let rays = this.viewport.GetRays(x, y, Consts.AA ? 4 : 1);
+                let rays = this.viewport.GetRays(x, y, Settings.AA ? 4 : 1);
                 let r: number = 0;
                 let g: number = 0;
                 let b: number = 0;

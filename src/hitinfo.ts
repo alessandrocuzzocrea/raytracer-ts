@@ -1,6 +1,6 @@
 import { Vec3 } from "./vec3";
 import { Color } from "./color";
-import { Consts } from "./consts";
+import { Settings } from "./settings";
 
 export class HitInfo {
    hit: boolean
@@ -26,7 +26,7 @@ export class HitInfo {
     }
 
     public GetColor() {
-        if (Consts.DEBUG_NORMALS) {
+        if (Settings.DEBUG_NORMALS) {
             return new Color(
                 this.normal.x * 255,
                 this.normal.y * 255,
