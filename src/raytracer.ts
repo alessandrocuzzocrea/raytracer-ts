@@ -1,6 +1,5 @@
 import { Viewport } from './viewport'
 import { Scene } from './scene';
-import { CameraRay } from './cameraray';
 import { Color } from './color';
 import { Consts } from './consts';
 
