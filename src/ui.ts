@@ -1,5 +1,6 @@
 export class UI {
-    private div: HTMLDivElement;
+    // private uiContainer: HTMLDivElement;
+    // private div: HTMLDivElement;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D
     private clearButton: HTMLButtonElement;
@@ -8,31 +9,25 @@ export class UI {
     private saveToPNGButton: HTMLButtonElement;
 
     constructor(width: number, height: number) {
-        this.div = document.createElement('div');
-        document.body.append(this.div)
+        // this.uiContainer = <HTMLDivElement>document.getElementById('ui-container');
+        // this.div = <HTMLDivElement>document.getElementById('canvas-container');
 
-        this.canvas = document.createElement('canvas');
-        this.div.appendChild(this.canvas);
-
+        this.canvas = <HTMLCanvasElement>document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = width;
         this.canvas.height = height;
 
-        this.clearButton = document.createElement('button');
+        this.clearButton = <HTMLButtonElement>document.getElementById('clear-button');
         this.clearButton.innerText = 'Clear';
-        this.div.appendChild(this.clearButton);
 
-        this.fillRandomButton = document.createElement('button');
+        this.fillRandomButton = <HTMLButtonElement>document.getElementById('fill-random-button');
         this.fillRandomButton.innerText = 'fillRandom';
-        this.div.appendChild(this.fillRandomButton);
 
-        this.renderButton = document.createElement('button');
+        this.renderButton = <HTMLButtonElement>document.getElementById('render-button');
         this.renderButton.innerText = 'render';
-        this.div.appendChild(this.renderButton);
 
-        this.saveToPNGButton = document.createElement('button');
+        this.saveToPNGButton = <HTMLButtonElement>document.getElementById('save-to-png-button');
         this.saveToPNGButton.innerText = 'saveToPNG';
-        this.div.appendChild(this.saveToPNGButton);
     }
 
     SetClearButtonOnClick(fn:() => void) {
