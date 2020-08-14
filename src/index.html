@@ -4,7 +4,105 @@
         <meta charset="utf-8">
         <title>raytracer-ts</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>
+            body {
+                background-color: linen;
+            }
+
+            h1 {
+                color: maroon;
+                margin-left: 40px;
+                text-align: center;
+            }
+
+            footer {
+                color: maroon;
+                margin-left: 40px;
+                text-align: center;
+                opacity: 40%;
+                font-size: 11px;
+                margin-top: 20px;
+            }
+
+            #ui-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            #buttons-container {
+                text-align:center;
+                border-style: solid;
+                border-width: 1px;
+                margin: 10px;
+            }
+
+            button {
+                width: 100%;
+                display: block;
+            }
+
+            button.disabled {
+                color:gainsboro;
+            }
+
+            #canvas-container {
+                border-style: solid;
+                border-width: 1px;
+                margin: 10px;
+                position: relative;
+            }
+
+            canvas {
+                display: block;
+            }
+
+            #rendering-message {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background-color: linen;
+                opacity: 50%;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                font-size:70px;
+            }
+
+            #rendering-message.hidden {
+                display: none;
+            }
+        </style>
     </head>
     <body>
+        <h1>raytracer-ts</h1>
+        <div id="ui-container">
+            <div id="buttons-container">
+                <p>controls</p>
+                <button id="render-button">Render</button>
+                <button id="fill-random-button">Fill Random</button>
+                <button id="clear-button">Clear</button>
+                <p>scene</p>
+                <button id="lights-button">Lights</button>
+                <button id="red-sphere-button">Red Sphere</button>
+                <button id="yellow-sphere-button">Yellow Sphere</button>
+                <button id="ground-button">Ground</button>
+                <button id="checkerboard-button">Checkerboard</button>
+                <button id="aa-button">Anti Aliasing</button>
+                <p>export</p>
+                <button id="save-to-png-button">Save To PNG</button>
+            </div>
+            <div id="canvas-container">
+                <div id="rendering-message">
+                    <p>rendering...</p>
+                </div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+        <footer>
+            Made by
+            <a href="https://alessandrocuzzocrea.com/" target="_blank">Alessandro Cuzzocrea</a>
+            ·
+            <a href="https://github.com/alessandrocuzzocrea/raytracer-ts/" target="_blank">GitHub</a>
+        </footer>
     </body>
 </html>

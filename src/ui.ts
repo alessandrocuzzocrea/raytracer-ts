@@ -1,38 +1,66 @@
+import { Settings } from "./settings";
+
 export class UI {
-    private div: HTMLDivElement;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D
+    private renderingMessageDiv: HTMLDivElement;
     private clearButton: HTMLButtonElement;
     private fillRandomButton: HTMLButtonElement;
     private renderButton: HTMLButtonElement;
     private saveToPNGButton: HTMLButtonElement;
+    private lightsButton: HTMLButtonElement;
+    private redSphereButton: HTMLButtonElement;
+    private yellowSphereButton: HTMLButtonElement;
+    private groundButton: HTMLButtonElement;
+    private checkerboardButton: HTMLButtonElement;
+    private aaButton: HTMLButtonElement;
 
     constructor(width: number, height: number) {
-        this.div = document.createElement('div');
-        document.body.append(this.div)
-
-        this.canvas = document.createElement('canvas');
-        this.div.appendChild(this.canvas);
-
+        this.canvas = <HTMLCanvasElement>document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = width;
         this.canvas.height = height;
 
-        this.clearButton = document.createElement('button');
-        this.clearButton.innerText = 'Clear';
-        this.div.appendChild(this.clearButton);
+        this.renderingMessageDiv = <HTMLDivElement>document.getElementById('rendering-message');
 
-        this.fillRandomButton = document.createElement('button');
-        this.fillRandomButton.innerText = 'fillRandom';
-        this.div.appendChild(this.fillRandomButton);
+        this.clearButton = <HTMLButtonElement>document.getElementById('clear-button');
+        this.fillRandomButton = <HTMLButtonElement>document.getElementById('fill-random-button');
+        this.renderButton = <HTMLButtonElement>document.getElementById('render-button');
+        this.saveToPNGButton = <HTMLButtonElement>document.getElementById('save-to-png-button');
 
-        this.renderButton = document.createElement('button');
-        this.renderButton.innerText = 'render';
-        this.div.appendChild(this.renderButton);
+        this.lightsButton = <HTMLButtonElement>document.getElementById('lights-button');
+        this.redSphereButton = <HTMLButtonElement>document.getElementById('red-sphere-button');
+        this.yellowSphereButton = <HTMLButtonElement>document.getElementById('yellow-sphere-button');
+        this.groundButton = <HTMLButtonElement>document.getElementById('ground-button');
+        this.checkerboardButton = <HTMLButtonElement>document.getElementById('checkerboard-button');
+        this.aaButton = <HTMLButtonElement>document.getElementById('aa-button');
+    }
 
-        this.saveToPNGButton = document.createElement('button');
-        this.saveToPNGButton.innerText = 'saveToPNG';
-        this.div.appendChild(this.saveToPNGButton);
+    UpdateButtons() {
+        let className = 'disabled';
+
+        this.lightsButton.classList.remove(className);
+        this.redSphereButton.classList.remove(className);
+        this.yellowSphereButton.classList.remove(className);
+        this.groundButton.classList.remove(className);
+        this.checkerboardButton.classList.remove(className);
+        this.aaButton.classList.remove(className);
+
+        if (!Settings.LIGHTS) this.lightsButton.classList.add(className);
+        if (!Settings.RENDER_RED_SPHERE) this.redSphereButton.classList.add(className);
+        if (!Settings.RENDER_YELLOW_SPHERE) this.yellowSphereButton.classList.add(className);
+        if (!Settings.RENDER_PLANE) this.groundButton.classList.add(className);
+        if (!Settings.CHECKERBOARD_PATTERN) this.checkerboardButton.classList.add(className);
+        if (!Settings.AA) this.aaButton.classList.add(className);
+    }
+
+    ShowRenderingMessage() {
+        this.renderingMessageDiv.classList.remove('hidden');
+    }
+
+    HideRenderingMessage() {
+        this.renderingMessageDiv.classList.add('hidden');
+
     }
 
     SetClearButtonOnClick(fn:() => void) {
@@ -58,5 +86,29 @@ export class UI {
     SaveToPNG() {
         var newTab = window.open();
         newTab.document.body.innerHTML = '<img src="' + this.canvas.toDataURL() + '">';
+    }
+
+    SetLightsButtonOnClick(fn:() => void) {
+        this.lightsButton.onclick = fn;
+    }
+
+    SetRedSphereButtonOnClick(fn:() => void) {
+        this.redSphereButton.onclick = fn;
+    }
+
+    SetYellowSphereButtonOnClick(fn:() => void) {
+        this.yellowSphereButton.onclick = fn;
+    }
+
+    SetGroundButtonOnClick(fn:() => void) {
+        this.groundButton.onclick = fn;
+    }
+
+    SetCheckerBoardButtonOnClick(fn:() => void) {
+        this.checkerboardButton.onclick = fn;
+    }
+
+    SetAAButtonOnClick(fn:() => void) {
+        this.aaButton.onclick = fn;
     }
 }
