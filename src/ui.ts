@@ -1,10 +1,9 @@
 import { Settings } from "./settings";
 
 export class UI {
-    // private uiContainer: HTMLDivElement;
-    // private div: HTMLDivElement;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D
+    private renderingMessageDiv: HTMLDivElement;
     private clearButton: HTMLButtonElement;
     private fillRandomButton: HTMLButtonElement;
     private renderButton: HTMLButtonElement;
@@ -17,13 +16,12 @@ export class UI {
     private aaButton: HTMLButtonElement;
 
     constructor(width: number, height: number) {
-        // this.uiContainer = <HTMLDivElement>document.getElementById('ui-container');
-        // this.div = <HTMLDivElement>document.getElementById('canvas-container');
-
         this.canvas = <HTMLCanvasElement>document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
         this.canvas.width = width;
         this.canvas.height = height;
+
+        this.renderingMessageDiv = <HTMLDivElement>document.getElementById('rendering-message');
 
         this.clearButton = <HTMLButtonElement>document.getElementById('clear-button');
         this.fillRandomButton = <HTMLButtonElement>document.getElementById('fill-random-button');
@@ -54,6 +52,15 @@ export class UI {
         if (!Settings.RENDER_PLANE) this.groundButton.classList.add(className);
         if (!Settings.CHECKERBOARD_PATTERN) this.checkerboardButton.classList.add(className);
         if (!Settings.AA) this.aaButton.classList.add(className);
+    }
+
+    ShowRenderingMessage() {
+        this.renderingMessageDiv.classList.remove('hidden');
+    }
+
+    HideRenderingMessage() {
+        this.renderingMessageDiv.classList.add('hidden');
+
     }
 
     SetClearButtonOnClick(fn:() => void) {

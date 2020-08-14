@@ -36,7 +36,9 @@ export class Controller {
         setTimeout(()=>{
             this.raytracer.Render();
             this.ui.DrawCanvas(this.raytracer.GetBuffer());
+            this.ui.HideRenderingMessage();
         },0);
+        this.ui.ShowRenderingMessage();
     }
 
     UpdateUI() {
